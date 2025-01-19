@@ -1,7 +1,8 @@
 import { useContext } from 'react'
 import PropTypes from 'prop-types'
-import { FavoritesContext } from '../context/FavoritesContext'
-import CharacterCard from '../components/CharacterCard'
+import { FavoritesContext } from '../../context/FavoritesContext'
+import CharacterCard from '../../components/CharacterCard/CharacterCard'
+import './Favorites.css'
 
 const Favorites = () => {
   const { favorites } = useContext(FavoritesContext)

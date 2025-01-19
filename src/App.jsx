@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
-import Home from './pages/Home'
-import Favorites from './pages/Favorites'
-import AddCharacter from './pages/AddCharacter'
+import Home from './pages/Home/Home'
+import Favorites from './pages/Favorites/Favorites'
+import AddCharacter from './pages/AddCharacter/AddCharacter'
 import { FavoritesProvider } from './context/FavoritesContext'
 import './App.css'
 

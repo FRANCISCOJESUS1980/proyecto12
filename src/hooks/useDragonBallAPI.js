@@ -1,18 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 
 const API_URL = 'https://dragonball-api.com/api/characters'
 
-const useDragonBallAPI = (page = 1, limit = 10) => {
+const useDragonBallAPI = (page = 1, limit = 58) => {
   const [characters, setCharacters] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const [pagination, setPagination] = useState({
-    totalItems: 0,
-    itemCount: 0,
-    itemsPerPage: limit,
-    totalPages: 0,
-    currentPage: page
-  })
+  const [pagination, setPagination] = useState({})
 
   useEffect(() => {
     const fetchCharacters = async () => {
@@ -32,7 +26,10 @@ const useDragonBallAPI = (page = 1, limit = 10) => {
     fetchCharacters()
   }, [page, limit])
 
-  return { characters, loading, error, pagination }
+  return useMemo(
+    () => ({ characters, loading, error, pagination }),
+    [characters, loading, error, pagination]
+  )
 }
 
 export default useDragonBallAPI

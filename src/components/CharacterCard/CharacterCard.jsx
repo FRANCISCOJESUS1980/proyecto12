@@ -1,19 +1,19 @@
 import PropTypes from 'prop-types'
-import { FavoritesContext } from '../context/FavoritesContext'
-import { useContext } from 'react'
+import useFavorites from '../../hooks/useFavorites'
+import './CharacterCard.css'
 
 const CharacterCard = ({ character }) => {
-  const { dispatch } = useContext(FavoritesContext)
+  const { addFavorite } = useFavorites()
 
-  const addToFavorites = () => {
-    dispatch({ type: 'ADD_FAVORITE', payload: character })
-  }
+  if (!character) return null
 
   return (
     <div className='character-card'>
       <h3>{character.name}</h3>
       <img src={character.image} alt={character.name} />
-      <button onClick={addToFavorites}>Add to Favorites</button>
+      <button onClick={() => addFavorite(character)}>
+        ❤️ Add to Favorites
+      </button>
     </div>
   )
 }

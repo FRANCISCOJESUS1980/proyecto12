@@ -1,0 +1,26 @@
+.character-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 200px;
+}
+
+.character-card img {
+  height: 180px;
+  border-radius: 8px;
+}
+
+button {
+  background-color: burlywood;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #e64a19;
+}
