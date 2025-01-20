@@ -62,7 +62,6 @@
   cursor: not-allowed;
 }
 
-/* Aseguramos que el loader se muestre correctamente */
 .db-loader-container {
   position: fixed;
   top: 0;
