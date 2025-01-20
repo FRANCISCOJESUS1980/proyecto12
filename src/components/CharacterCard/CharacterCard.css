@@ -1,26 +1,33 @@
 .character-card {
-  background-color: white;
+  background-color: rgb(0, 183, 255);
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   text-align: center;
   width: 200px;
 }
+.character-card:hover {
+  background-color: aqua;
+}
 
 .character-card img {
-  height: 180px;
+  height: 160px;
   border-radius: 8px;
 }
 
 button {
-  background-color: burlywood;
+  background: rgb(102, 185, 253);
   color: white;
   border: none;
   padding: 10px;
   cursor: pointer;
   border-radius: 5px;
+  text-shadow: 1px 1px white;
 }
 
 button:hover {
   background-color: #e64a19;
+}
+h3 {
+  text-shadow: 2px 2px white;
 }

@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react'
 
 const API_URL = 'https://dragonball-api.com/api/characters'
 
-const useDragonBallAPI = (page = 1, limit = 58) => {
+const useDragonBallAPI = (page = 1, limit = 20) => {
   const [characters, setCharacters] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
