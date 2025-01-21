@@ -1,0 +1,26 @@
+.videos-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.video-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.video-list iframe {
+  width: 300px;
+  height: 170px;
+  border-radius: 10px;
+  border: none;
+}
+
+@media (min-width: 768px) {
+  .video-list iframe {
+    width: 560px;
+    height: 315px;
+  }
+}
