@@ -1,4 +1,4 @@
-.db-loader-container {
+/*.db-loader-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -506,4 +506,15 @@
     transform: translate(100px, -50px) scale(0);
     opacity: 0;
   }
+}*/
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  height: 100vh;
+}
+
+.loader-gif {
+  width: 350px;
+  height: 500px;
 }

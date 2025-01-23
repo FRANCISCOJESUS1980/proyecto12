@@ -1,4 +1,4 @@
-import './Loader.css'
+/*import './Loader.css'
 
 export default function DragonBallLoader() {
   return (
@@ -60,4 +60,16 @@ export default function DragonBallLoader() {
       </div>
     </div>
   )
+}*/
+import loaderGif from '../../../public/assets/imagenes/goku.gif'
+import './Loader.css'
+
+const Loader = () => {
+  return (
+    <div className='loader-container'>
+      <img src={loaderGif} alt='Cargando...' className='loader-gif' />
+    </div>
+  )
 }
+
+export default Loader
