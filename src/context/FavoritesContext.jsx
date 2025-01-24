@@ -1,35 +1,45 @@
-import { createContext, useReducer, useMemo } from 'react'
+import { createContext, useReducer, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 const FavoritesContext = createContext()
 
 const favoritesReducer = (state, action) => {
   switch (action.type) {
-    case 'ADD_FAVORITE':
-      return state.some((fav) => fav.id === action.payload.id)
-        ? state
-        : [...state, action.payload]
-    case 'REMOVE_FAVORITE':
-      return state.filter((character) => character.id !== action.payload)
+    case 'ADD_FAVORITE': {
+      const updatedFavorites = [...state, action.payload]
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites))
+      return updatedFavorites
+    }
+
+    case 'REMOVE_FAVORITE': {
+      const updatedFavorites = state.filter(
+        (char) => char.id !== action.payload.id
+      )
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites))
+      return updatedFavorites
+    }
+
     default:
       return state
   }
 }
 
-const FavoritesProvider = ({ children }) => {
-  const [favorites, dispatch] = useReducer(favoritesReducer, [])
+export const FavoritesProvider = ({ children }) => {
+  const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || []
+  const [favorites, dispatch] = useReducer(favoritesReducer, storedFavorites)
 
-  const value = useMemo(() => ({ favorites, dispatch }), [favorites])
+  useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites))
+  }, [favorites])
 
   return (
-    <FavoritesContext.Provider value={value}>
+    <FavoritesContext.Provider value={{ favorites, dispatch }}>
       {children}
     </FavoritesContext.Provider>
   )
 }
-
 FavoritesProvider.propTypes = {
   children: PropTypes.node.isRequired
 }
 
-export { FavoritesContext, FavoritesProvider }
+export { FavoritesContext }

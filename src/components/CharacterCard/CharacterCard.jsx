@@ -1,33 +1,43 @@
 import PropTypes from 'prop-types'
-import useFavorites from '../../hooks/useFavorites'
+import { useContext } from 'react'
+import { FavoritesContext } from '../../context/FavoritesContext'
 import './CharacterCard.css'
 
 const CharacterCard = ({ character }) => {
-  const { addFavorite } = useFavorites()
+  const { favorites, dispatch } = useContext(FavoritesContext)
 
   if (!character) return null
 
+  const isFavorite = favorites.some((fav) => fav.id === character.id)
+
+  const toggleFavorite = () => {
+    if (isFavorite) {
+      dispatch({ type: 'REMOVE_FAVORITE', payload: character })
+    } else {
+      dispatch({ type: 'ADD_FAVORITE', payload: character })
+    }
+  }
+
   return (
     <div className='character-card'>
-      <h3>{character.name}</h3>
       <img src={character.image} alt={character.name} />
       <h2>{character.name}</h2>
       <p>
-        <strong>Raza:</strong> {character.race}
+        <strong>Raza:</strong> {character.race || 'Desconocido'}
       </p>
       <p>
-        <strong>Género:</strong> {character.gender}
+        <strong>Género:</strong> {character.gender || 'Desconocido'}
       </p>
-
       <p>
-        <strong>Ki:</strong> {character.ki}
+        <strong>Ki:</strong> {character.ki || 'Desconocido'}
       </p>
-      <button onClick={() => addFavorite(character)}>
-        ❤️ Add to Favorites
+      <button onClick={toggleFavorite}>
+        {isFavorite ? '❌ Eliminar de Favoritos' : '❤️ Agregar a Favoritos'}
       </button>
     </div>
   )
 }
+
 CharacterCard.propTypes = {
   character: PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
@@ -36,7 +46,7 @@ CharacterCard.propTypes = {
     race: PropTypes.string,
     gender: PropTypes.string,
     ki: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-  })
+  }).isRequired
 }
 
 export default CharacterCard
