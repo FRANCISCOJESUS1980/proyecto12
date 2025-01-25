@@ -1,4 +1,4 @@
-import './Videos.css'
+import './videos.css'
 
 const Videos = () => {
   const videos = [
