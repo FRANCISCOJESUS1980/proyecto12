@@ -5,14 +5,27 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   text-align: center;
   width: 200px;
+  position: relative;
+  transition: transform 0.3s ease;
 }
+
 .character-card:hover {
   background-color: aqua;
 }
-
+.character-card > p {
+  font-size: medium;
+}
 .character-card img {
-  height: 160px;
+  height: 200px;
   border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.character-card:hover img {
+  transform: scale(1.45) translateY(-10px);
+  box-shadow: none;
 }
 
 button {
@@ -23,6 +36,8 @@ button {
   cursor: pointer;
   border-radius: 5px;
   text-shadow: 1px 1px white;
+  position: relative;
+  z-index: 0;
 }
 
 button:hover {

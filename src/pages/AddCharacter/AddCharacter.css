@@ -8,14 +8,29 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  width: 100%;
 }
 
-.add-character-form input {
+.add-character-form input,
+.add-character-form select {
   width: 80%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+  text-align: center;
 }
+
+.add-character-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: white;
+  cursor: pointer;
+  text-align: center;
+}
+
 .preview-image {
   width: 100px;
   height: 150px;
@@ -23,6 +38,7 @@
   border-radius: 8px;
   margin-top: 10px;
 }
+
 img {
   width: 150px;
 }
@@ -34,6 +50,8 @@ img {
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  font-size: 16px;
+  width: 80%;
 }
 
 .add-character-form button:hover {
