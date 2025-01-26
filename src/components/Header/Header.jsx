@@ -1,14 +1,32 @@
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './Header.css'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const menuRef = useRef(null)
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
     document.body.style.overflow = isMenuOpen ? 'auto' : 'hidden'
   }
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false)
+        document.body.style.overflow = 'auto'
+      }
+    }
+
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isMenuOpen])
 
   return (
     <header className='header'>
@@ -25,7 +43,10 @@ const Header = () => {
         <span className={`hamburger ${isMenuOpen ? 'active' : ''}`}></span>
       </button>
 
-      <div className={`menu-overlay ${isMenuOpen ? 'active' : ''}`}>
+      <div
+        ref={menuRef}
+        className={`menu-overlay ${isMenuOpen ? 'active' : ''}`}
+      >
         <nav className={`nav ${isMenuOpen ? 'active' : ''}`}>
           <Link to='/' onClick={toggleMenu}>
             🏠 Inicio

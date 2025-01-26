@@ -1,36 +1,15 @@
+#root {
+  margin: 0;
+  padding: 0;
+}
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  background: #e65c00;
+  background: -webkit-linear-gradient(to right, #f9d423, #e65c00);
+  background: linear-gradient(to right, #f9d423, #e65c00);
 }
-html {
-  background: linear-gradient(to right, #2c3e50, #3498db);
-}
-#root {
-  background: linear-gradient(to right, #2c3e50, #3498db);
-}
-nav {
-  background-color: rgb(0, 183, 255);
-  padding: 10px;
-  display: flex;
-  justify-content: space-around;
-  height: 100px;
-  align-items: center;
-  text-shadow: 2px 2px white;
-}
-
-nav a {
-  color: blue;
-  text-decoration: none;
-  font-weight: bold;
-  height: 30px;
-  font-size: x-large;
-  border-radius: 8px;
-}
-nav a:hover {
-  color: aqua;
-}
-
 h1 {
   text-align: center;
   text-shadow: 2px 2px white;

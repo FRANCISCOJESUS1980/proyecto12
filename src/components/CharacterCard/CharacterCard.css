@@ -1,5 +1,5 @@
 .character-card {
-  background-color: rgb(186, 226, 243);
+  background-color: #ffd266;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -10,7 +10,7 @@
 }
 
 .character-card:hover {
-  background-color: aqua;
+  background-color: rgb(242, 144, 7);
 }
 .character-card > p {
   font-size: medium;
@@ -29,17 +29,19 @@
 }
 
 button {
-  background: rgb(102, 185, 253);
+  background: -webkit-linear-gradient(to right, #f9d423, #e65c00);
+  background: linear-gradient(to right, #f9d423, #e65c00);
   color: white;
   border: none;
   padding: 10px;
   cursor: pointer;
   border-radius: 5px;
-  text-shadow: 1px 1px white;
+
   position: relative;
   z-index: 0;
 }
 
 button:hover {
-  background-color: #e64a19;
+  background-color: #f1dd21;
+  color: black;
 }

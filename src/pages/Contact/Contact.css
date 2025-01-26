@@ -24,14 +24,15 @@
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   gap: 40px;
-  background: white;
+  background: #e65c00;
+  background: -webkit-linear-gradient(to right, #f9d423, #e65c00);
+  background: linear-gradient(to right, #f9d423, #e65c00);
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
 
 .contact-info {
-  background: linear-gradient(135deg, #4a90e2 0%, #2c5282 100%);
   color: white;
   padding: 40px;
   position: relative;
@@ -116,6 +117,9 @@
 
 .contact-form {
   padding: 40px;
+  background: #e65c00;
+  background: -webkit-linear-gradient(to right, #f9d423, #e65c00);
+  background: linear-gradient(to right, #f9d423, #e65c00);
 }
 
 .form-group {
@@ -155,7 +159,7 @@
 .submit-button {
   width: 100%;
   padding: 12px 25px;
-  background: #4a90e2;
+  background: orange;
   color: white;
   border: none;
   border-radius: 10px;
@@ -169,7 +173,7 @@
 }
 
 .submit-button:hover:not(:disabled) {
-  background: #357abd;
+  background: gray;
   transform: translateY(-2px);
 }
 
