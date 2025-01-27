@@ -31,7 +31,7 @@ const CharacterCard = ({ character }) => {
       <p>
         <strong>Ki:</strong> {character.ki || 'Desconocido'}
       </p>
-      <button onClick={toggleFavorite}>
+      <button className='characterbutton' onClick={toggleFavorite}>
         {isFavorite ? '❌ Eliminar de Favoritos' : '❤️ Agregar a Favoritos'}
       </button>
     </div>

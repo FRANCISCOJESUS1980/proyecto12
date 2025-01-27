@@ -1,26 +1,3 @@
-.pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.pagination button {
-  margin: 5px;
-  padding: 10px;
-  color: black;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.pagination button:hover {
-  background-color: orange;
-}
-
-.pagination button:disabled {
-  background-color: grey;
-  cursor: not-allowed;
-}
 .home-container {
   padding: 20px;
   min-height: 100vh;
