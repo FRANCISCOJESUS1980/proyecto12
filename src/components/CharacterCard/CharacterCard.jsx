@@ -19,7 +19,7 @@ const CharacterCard = ({ character }) => {
   }
 
   return (
-    <div className='character-card'>
+    <article className='character-card'>
       <img src={character.image} alt={character.name} />
       <h2>{character.name}</h2>
       <p>
@@ -34,7 +34,7 @@ const CharacterCard = ({ character }) => {
       <button className='characterbutton' onClick={toggleFavorite}>
         {isFavorite ? '❌ Eliminar de Favoritos' : '❤️ Agregar a Favoritos'}
       </button>
-    </div>
+    </article>
   )
 }
 

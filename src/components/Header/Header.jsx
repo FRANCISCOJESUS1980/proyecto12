@@ -30,11 +30,13 @@ const Header = () => {
 
   return (
     <header className='header'>
-      <img
-        src='/assets/imagenes/header.jpg'
-        alt='Dragon Ball Header'
-        className='header-image'
-      />
+      <figure>
+        <img
+          src='/assets/imagenes/header.jpg'
+          alt='Dragon Ball Header'
+          className='header-image'
+        />
+      </figure>
       <button
         className='menu-toggle'
         onClick={toggleMenu}
@@ -43,7 +45,7 @@ const Header = () => {
         <span className={`hamburger ${isMenuOpen ? 'active' : ''}`}></span>
       </button>
 
-      <div
+      <aside
         ref={menuRef}
         className={`menu-overlay ${isMenuOpen ? 'active' : ''}`}
       >
@@ -64,7 +66,7 @@ const Header = () => {
             📩 Contacto
           </Link>
         </nav>
-      </div>
+      </aside>
 
       <nav className='nav-desktop'>
         <Link to='/'>🏠 Inicio</Link>

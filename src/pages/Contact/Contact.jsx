@@ -4,7 +4,6 @@ import {
   Phone,
   Mail,
   Clock,
-  Send,
   Linkedin,
   Github,
   Twitter
@@ -85,18 +84,18 @@ const Contact = () => {
   }
 
   return (
-    <div className='contact-page'>
-      <div className='contact-header'>
+    <section className='contact-page'>
+      <header className='contact-header'>
         <h1>📩 Contacto</h1>
         <p>¿Tienes alguna pregunta? Estamos aquí para ayudarte</p>
-      </div>
+      </header>
 
       <div className='contact-container'>
-        <div className='contact-info'>
+        <section className='contact-info'>
           <h2>Información de Contacto</h2>
           <p>Elige el método que prefieras para contactarnos</p>
 
-          <div className='contact-methods'>
+          <address className='contact-methods'>
             <div className='contact-method'>
               <MapPin className='icon' />
               <div>
@@ -128,13 +127,14 @@ const Contact = () => {
                 <p>Lun-Vie: 9:00-18:00</p>
               </div>
             </div>
-          </div>
+          </address>
 
-          <div className='social-links'>
+          <nav className='social-links'>
             <a
               href='https://linkedin.com'
               target='_blank'
               rel='noopener noreferrer'
+              aria-label='LinkedIn'
             >
               <Linkedin className='icon' />
             </a>
@@ -142,6 +142,7 @@ const Contact = () => {
               href='https://github.com'
               target='_blank'
               rel='noopener noreferrer'
+              aria-label='GitHub'
             >
               <Github className='icon' />
             </a>
@@ -149,12 +150,13 @@ const Contact = () => {
               href='https://twitter.com'
               target='_blank'
               rel='noopener noreferrer'
+              aria-label='Twitter'
             >
               <Twitter className='icon' />
             </a>
-          </div>
+          </nav>
 
-          <div className='contact-map'>
+          <figure className='contact-map'>
             <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -164,12 +166,12 @@ const Contact = () => {
                 <Popup>Nuestra ubicación en Madrid</Popup>
               </Marker>
             </MapContainer>
-          </div>
-        </div>
+          </figure>
+        </section>
 
-        <div className='contact-form'>
+        <section className='contact-form'>
           {submitted ? (
-            <div className='success-message'>
+            <article className='success-message'>
               <div className='success-icon'>✨</div>
               <h2>¡Gracias por tu mensaje!</h2>
               <p>Te responderemos lo antes posible. 😊</p>
@@ -179,12 +181,14 @@ const Contact = () => {
               >
                 Enviar otro mensaje
               </button>
-            </div>
+            </article>
           ) : (
             <form onSubmit={handleSubmit}>
               <div className='form-group'>
+                <label htmlFor='name'>Nombre:</label>
                 <input
                   type='text'
+                  id='name'
                   name='name'
                   placeholder='Tu Nombre'
                   value={formData.name}
@@ -197,8 +201,10 @@ const Contact = () => {
               </div>
 
               <div className='form-group'>
+                <label htmlFor='email'>Correo Electrónico:</label>
                 <input
                   type='email'
+                  id='email'
                   name='email'
                   placeholder='Tu Correo Electrónico'
                   value={formData.email}
@@ -211,8 +217,10 @@ const Contact = () => {
               </div>
 
               <div className='form-group'>
+                <label htmlFor='subject'>Asunto:</label>
                 <input
                   type='text'
+                  id='subject'
                   name='subject'
                   placeholder='Asunto (opcional)'
                   value={formData.subject}
@@ -221,7 +229,9 @@ const Contact = () => {
               </div>
 
               <div className='form-group'>
+                <label htmlFor='message'>Mensaje:</label>
                 <textarea
+                  id='message'
                   name='message'
                   placeholder='Tu Mensaje'
                   value={formData.message}
@@ -239,23 +249,13 @@ const Contact = () => {
                 className={`submit-button ${sending ? 'sending' : ''}`}
                 disabled={sending}
               >
-                {sending ? (
-                  <span className='sending-text'>
-                    <div className='spinner'></div>
-                    Enviando...
-                  </span>
-                ) : (
-                  <span className='submit-text'>
-                    <Send className='icon' />
-                    Enviar Mensaje
-                  </span>
-                )}
+                {sending ? 'Enviando...' : 'Enviar Mensaje'}
               </button>
             </form>
           )}
-        </div>
+        </section>
       </div>
-    </div>
+    </section>
   )
 }
 
