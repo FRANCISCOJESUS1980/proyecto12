@@ -1,6 +1,6 @@
 .add-character-container {
   text-align: center;
-  margin-top: 20px;
+  margin-top: var(--rc-margin-top5);
 }
 
 .add-character-form {
@@ -14,9 +14,9 @@
 .add-character-form input,
 .add-character-form select {
   width: 80%;
-  padding: 10px;
+  padding: var(--rc-padding2);
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: var(--rc-border-radius1);
   font-size: 16px;
   box-sizing: border-box;
   text-align: center;
@@ -26,7 +26,7 @@
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-color: white;
+  background-color: var(--background-color3);
   cursor: pointer;
   text-align: center;
 }
@@ -35,8 +35,8 @@
   width: 100px;
   height: 150px;
   object-fit: cover;
-  border-radius: 8px;
-  margin-top: 10px;
+  border-radius: var(--rc-border-radius2);
+  margin-top: var(--rc-margin-top3);
 }
 
 img {
@@ -44,16 +44,17 @@ img {
 }
 
 .add-character-form button {
-  background-color: orange;
-  color: black;
-  padding: 10px 15px;
+  background-color: var(--background-color1);
+  color: var(--segundo-color);
+  padding: var(--rc-padding2) var(--rc-padding3);
   border: none;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: var(--rc-border-radius1);
   font-size: 16px;
   width: 80%;
 }
 
 .add-character-form button:hover {
-  background-color: #f9d423;
+  background-color: var(--background-color2);
+  color: var(--primer-color);
 }

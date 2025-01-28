@@ -1,7 +1,7 @@
 .contact-page {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: var(--rc-padding5) var(--rc-padding4);
 }
 
 .contact-header {
@@ -11,12 +11,12 @@
 
 .contact-header h1 {
   font-size: 2.5rem;
-  color: #333;
+  color: var(--segundo-color);
   margin-bottom: 10px;
 }
 
 .contact-header p {
-  color: #666;
+  color: var(--segundo-color);
   font-size: 1.1rem;
 }
 
@@ -24,17 +24,16 @@
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   gap: 40px;
-  background: #e65c00;
-  background: -webkit-linear-gradient(to right, #f9d423, #e65c00);
-  background: linear-gradient(to right, #f9d423, #e65c00);
+
+  background: var(--background);
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
 
 .contact-info {
-  color: white;
-  padding: 40px;
+  color: var(--primer-color);
+  padding: var(--rc-padding5);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -63,8 +62,8 @@
 
 .contact-method .icon {
   background: rgba(255, 255, 255, 0.1);
-  padding: 10px;
-  border-radius: 10px;
+  padding: var(--rc-padding2);
+  border-radius: var(--rc-border-radius3);
   width: 40px;
   height: 40px;
 }
@@ -99,8 +98,8 @@
 
 .social-links a {
   background: rgba(255, 255, 255, 0.1);
-  padding: 10px;
-  border-radius: 10px;
+  padding: var(--rc-padding2);
+  border-radius: var(--rc-border-radius3);
   transition: all 0.3s ease;
 }
 
@@ -112,14 +111,12 @@
 .social-links .icon {
   width: 24px;
   height: 24px;
-  color: white;
+  color: var(--primer-color);
 }
 
 .contact-form {
-  padding: 40px;
-  background: #e65c00;
-  background: -webkit-linear-gradient(to right, #f9d423, #e65c00);
-  background: linear-gradient(to right, #f9d423, #e65c00);
+  padding: var(--rc-padding5);
+  background: var(--background);
 }
 
 .form-group {
@@ -130,16 +127,16 @@
 .contact-form input,
 .contact-form textarea {
   width: 90%;
-  padding: 12px 15px;
+  padding: 12px var(--rc-padding3);
   border: 1px solid #ddd;
-  border-radius: 10px;
+  border-radius: var(--rc-border-radius3);
   font-size: 1rem;
   transition: all 0.3s ease;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  border-color: #4a90e2;
+  border-color: var(--segundo-color);
   box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);
   outline: none;
 }
@@ -152,17 +149,17 @@
 .error-message {
   color: #e53e3e;
   font-size: 0.875rem;
-  margin-top: 5px;
+  margin-top: var(--rc-margin-top2);
   display: block;
 }
 
 .submit-button {
   width: 100%;
   padding: 12px 25px;
-  background: orange;
-  color: white;
+  background: var(--background-color1);
+  color: var(--primer-color);
   border: none;
-  border-radius: 10px;
+  border-radius: var(--rc-border-radius3);
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -173,7 +170,7 @@
 }
 
 .submit-button:hover:not(:disabled) {
-  background: #f9d423;
+  background: var(--quinto-color);
   transform: translateY(-2px);
 }
 
@@ -191,8 +188,8 @@
   width: 20px;
   height: 20px;
   border: 3px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  border-top-color: white;
+  border-radius: var(--rc-border-radius4);
+  border-top-color: var(--primer-color);
   animation: spin 1s linear infinite;
   margin-right: 8px;
 }
@@ -205,7 +202,7 @@
 
 .success-message {
   text-align: center;
-  padding: 40px 20px;
+  padding: var(--rc-padding5) var(--rc-padding4);
 }
 
 .success-icon {
@@ -215,28 +212,28 @@
 }
 
 .success-message h2 {
-  color: #2c5282;
+  color: var(--segundo-color);
   margin-bottom: 10px;
 }
 
 .success-message p {
-  color: #666;
+  color: var(--segundo-color);
   margin-bottom: 20px;
 }
 
 .send-another {
   background: transparent;
-  border: 2px solid #4a90e2;
-  color: #4a90e2;
-  padding: 10px 20px;
-  border-radius: 10px;
+  border: 2px solid var(--tercer-color);
+  color: var(--tercer-color);
+  padding: var(--rc-padding2) var(--rc-padding4);
+  border-radius: var(--rc-border-radius3);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .send-another:hover {
-  background: #4a90e2;
-  color: white;
+  background: var(--segundo-color);
+  color: var(--primer-color);
 }
 
 @keyframes bounce {

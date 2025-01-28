@@ -1,16 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Saiyan-Sans&display=swap');
+:root {
+  font-family: 'Saiyan-Sans', sans-serif;
+
+  --background: linear-gradient(to right, #f9d423, #e65c00);
+
+  --background-color1: orange;
+  --background-color2: black;
+  --background-color3: white;
+  --background-color4: #ffd266;
+  --background-color5: rgb(242, 144, 7);
+
+  --primer-color: white;
+  --segundo-color: black;
+  --tercer-color: yellow;
+  --cuarto-color: #ff6b1a;
+  --quinto-color: #f9d423;
+
+  --rc-border-radius1: 5px;
+  --rc-border-radius2: 8px;
+  --rc-border-radius3: 10px;
+  --rc-border-radius4: 50%;
+
+  --rc-padding1: 8px;
+  --rc-padding2: 10px;
+  --rc-padding3: 15px;
+  --rc-padding4: 20px;
+  --rc-padding5: 40px;
+
+  --rc-margin-top1: 3px;
+  --rc-margin-top2: 5px;
+  --rc-margin-top3: 10px;
+  --rc-margin-top4: 15px;
+  --rc-margin-top5: 20px;
+}
+
 #root {
   margin: 0;
   padding: 0;
 }
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Saiyan-Sans', sans-serif;
   margin: 0;
   padding: 0;
-  background: #e65c00;
-  background: -webkit-linear-gradient(to right, #f9d423, #e65c00);
-  background: linear-gradient(to right, #f9d423, #e65c00);
+
+  background: var(--background);
 }
 h1 {
   text-align: center;
-  text-shadow: 2px 2px white;
+  text-shadow: 2px 2px var(--primer-color);
 }

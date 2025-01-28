@@ -1,7 +1,7 @@
 .character-card {
-  background-color: #ffd266;
-  padding: 20px;
-  border-radius: 8px;
+  background-color: var(--background-color4);
+  padding: var(--rc-padding4);
+  border-radius: var(--rc-border-radius2);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   text-align: center;
   width: 200px;
@@ -10,14 +10,14 @@
 }
 
 .character-card:hover {
-  background-color: rgb(242, 144, 7);
+  background-color: var(--background-color5);
 }
 .character-card > p {
   font-size: medium;
 }
 .character-card img {
   height: 200px;
-  border-radius: 8px;
+  border-radius: var(--rc-border-radius2);
   transition: all 0.3s ease;
   position: relative;
   z-index: 1;
@@ -29,12 +29,12 @@
 }
 
 .characterbutton {
-  background: linear-gradient(to right, #f9d423, #e65c00);
-  color: white;
+  background: var(--background);
+  color: var(--primer-color);
   border: none;
-  padding: 10px;
+  padding: var(--rc-padding2);
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: var(--rc-border-radius1);
   position: relative;
   z-index: 0;
 }
