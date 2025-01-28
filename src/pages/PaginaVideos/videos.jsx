@@ -3,6 +3,10 @@ import './videos.css'
 const Videos = () => {
   const videos = [
     {
+      src: 'https://v1.ecartelera.com/video/600/680.mp4',
+      title: 'Trailer película Bola de Dragón'
+    },
+    {
       src: 'https://v1.ecartelera.com/video/15200/15299.mp4',
       title: 'Goku vs Vegeta Maligno'
     },
@@ -25,10 +29,6 @@ const Videos = () => {
     {
       src: 'https://v1.ecartelera.com/video/15200/15273.mp4',
       title: 'Goku vs Friezzer'
-    },
-    {
-      src: 'https://v1.ecartelera.com/video/600/680.mp4',
-      title: 'Trailer película Bola de Dragón'
     }
   ]
 
