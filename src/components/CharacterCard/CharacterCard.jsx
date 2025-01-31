@@ -1,8 +1,8 @@
-import { useContext } from 'react'
+import { useContext, memo } from 'react'
 import { FavoritesContext } from '../../context/FavoritesContext'
 import './CharacterCard.css'
 
-const CharacterCard = ({ character }) => {
+const CharacterCard = memo(({ character }) => {
   const { favorites, dispatch } = useContext(FavoritesContext)
 
   if (!character) return null
@@ -10,11 +10,10 @@ const CharacterCard = ({ character }) => {
   const isFavorite = favorites.some((fav) => fav.id === character.id)
 
   const toggleFavorite = () => {
-    if (isFavorite) {
-      dispatch({ type: 'REMOVE_FAVORITE', payload: character })
-    } else {
-      dispatch({ type: 'ADD_FAVORITE', payload: character })
-    }
+    dispatch({
+      type: isFavorite ? 'REMOVE_FAVORITE' : 'ADD_FAVORITE',
+      payload: character
+    })
   }
 
   return (
@@ -35,6 +34,6 @@ const CharacterCard = ({ character }) => {
       </button>
     </article>
   )
-}
+})
 
 export default CharacterCard

@@ -125,7 +125,7 @@
 
 .contact-form input,
 .contact-form textarea {
-  width: 90%;
+  width: 95%;
   padding: 12px var(--rc-padding3);
   border: 1px solid #ddd;
   border-radius: var(--rc-border-radius3);
@@ -272,6 +272,10 @@
 @media (max-width: 480px) {
   .contact-header h1 {
     font-size: 2rem;
+  }
+  .contact-form input,
+  .contact-form textarea {
+    width: 90%;
   }
 
   .contact-method {

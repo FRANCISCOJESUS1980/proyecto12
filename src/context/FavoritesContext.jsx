@@ -1,4 +1,4 @@
-import { createContext, useReducer, useEffect } from 'react'
+import { createContext, useReducer, useContext, useMemo } from 'react'
 
 const FavoritesContext = createContext()
 
@@ -9,7 +9,6 @@ const favoritesReducer = (state, action) => {
       localStorage.setItem('favorites', JSON.stringify(updatedFavorites))
       return updatedFavorites
     }
-
     case 'REMOVE_FAVORITE': {
       const updatedFavorites = state.filter(
         (char) => char.id !== action.payload.id
@@ -17,7 +16,6 @@ const favoritesReducer = (state, action) => {
       localStorage.setItem('favorites', JSON.stringify(updatedFavorites))
       return updatedFavorites
     }
-
     default:
       return state
   }
@@ -27,15 +25,14 @@ export const FavoritesProvider = ({ children }) => {
   const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || []
   const [favorites, dispatch] = useReducer(favoritesReducer, storedFavorites)
 
-  useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites))
-  }, [favorites])
+  const contextValue = useMemo(() => ({ favorites, dispatch }), [favorites])
 
   return (
-    <FavoritesContext.Provider value={{ favorites, dispatch }}>
+    <FavoritesContext.Provider value={contextValue}>
       {children}
     </FavoritesContext.Provider>
   )
 }
 
 export { FavoritesContext }
+export const useFavorites = () => useContext(FavoritesContext)
