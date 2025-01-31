@@ -1,12 +1,28 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import useDragonBallAPI from '../../hooks/useDragonBallAPI'
 import CharacterCard from '../../components/CharacterCard/CharacterCard'
 import DragonBallLoader from '../../components/Loader/Loader'
+import { useCharacters } from '../../context/CharacterContext'
 import './Home.css'
 
 const Home = () => {
   const [page, setPage] = useState(1)
-  const { characters, loading, pagination } = useDragonBallAPI(page)
+  const {
+    characters: apiCharacters,
+    loading,
+    pagination
+  } = useDragonBallAPI(page)
+  const { characters: userCharacters } = useCharacters()
+
+  const combinedCharacters = [...userCharacters, ...apiCharacters].reduce(
+    (acc, character) => {
+      if (!acc.some((c) => c.id === character.id)) {
+        acc.push(character)
+      }
+      return acc
+    },
+    []
+  )
 
   return (
     <div className='home-container'>
@@ -16,7 +32,7 @@ const Home = () => {
         <DragonBallLoader />
       ) : (
         <div className='character-list'>
-          {characters.map((character) => (
+          {combinedCharacters.map((character) => (
             <CharacterCard key={character.id} character={character} />
           ))}
         </div>

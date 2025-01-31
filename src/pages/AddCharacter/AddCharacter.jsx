@@ -1,63 +1,9 @@
-import { useContext, useState } from 'react'
-import { FavoritesContext } from '../../context/FavoritesContext'
+import { useAddCharacter } from '../../hooks/useAddCharacter'
 import './AddCharacter.css'
 
 const AddCharacter = () => {
-  const { dispatch } = useContext(FavoritesContext)
-
-  const [name, setName] = useState('')
-  const [race, setRace] = useState('')
-  const [gender, setGender] = useState('')
-  const [ki, setKi] = useState('')
-  const [image, setImage] = useState(null)
-  const [preview, setPreview] = useState(null)
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0]
-    if (file) {
-      setImage(file)
-      setPreview(URL.createObjectURL(file))
-    }
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-
-    if (
-      !name.trim() ||
-      !race.trim() ||
-      !gender.trim() ||
-      !ki.trim() ||
-      !image
-    ) {
-      alert(
-        'Por favor, completa todos los campos antes de agregar el personaje.'
-      )
-      return
-    }
-
-    const reader = new FileReader()
-    reader.readAsDataURL(image)
-    reader.onloadend = () => {
-      const newCharacter = {
-        id: Date.now(),
-        name,
-        race,
-        gender,
-        ki,
-        image: reader.result
-      }
-
-      dispatch({ type: 'ADD_FAVORITE', payload: newCharacter })
-
-      setName('')
-      setRace('')
-      setGender('')
-      setKi('')
-      setImage(null)
-      setPreview(null)
-    }
-  }
+  const { state, handleChange, handleImageChange, handleSubmit, preview } =
+    useAddCharacter()
 
   return (
     <div className='add-character-container'>
@@ -65,19 +11,21 @@ const AddCharacter = () => {
       <form onSubmit={handleSubmit} className='add-character-form'>
         <input
           type='text'
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          name='name'
+          value={state.name}
+          onChange={handleChange}
           placeholder='Nombre del personaje'
         />
 
         <input
           type='text'
-          value={race}
-          onChange={(e) => setRace(e.target.value)}
+          name='race'
+          value={state.race}
+          onChange={handleChange}
           placeholder='Raza del personaje'
         />
 
-        <select value={gender} onChange={(e) => setGender(e.target.value)}>
+        <select name='gender' value={state.gender} onChange={handleChange}>
           <option value=''>Selecciona género</option>
           <option value='Masculino'>Masculino</option>
           <option value='Femenino'>Femenino</option>
@@ -86,8 +34,9 @@ const AddCharacter = () => {
 
         <input
           type='number'
-          value={ki}
-          onChange={(e) => setKi(e.target.value)}
+          name='ki'
+          value={state.ki}
+          onChange={handleChange}
           placeholder='Nivel de Ki'
         />
 

@@ -61,7 +61,7 @@
 }
 
 .contact-method .icon {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--background-color1);
   padding: var(--rc-padding2);
   border-radius: var(--rc-border-radius3);
   width: 40px;
@@ -97,7 +97,7 @@
 }
 
 .social-links a {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--background-color1);
   padding: var(--rc-padding2);
   border-radius: var(--rc-border-radius3);
   transition: all 0.3s ease;

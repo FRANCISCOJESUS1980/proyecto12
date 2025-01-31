@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import { useContext } from 'react'
 import { FavoritesContext } from '../../context/FavoritesContext'
 import './CharacterCard.css'
@@ -36,17 +35,6 @@ const CharacterCard = ({ character }) => {
       </button>
     </article>
   )
-}
-
-CharacterCard.propTypes = {
-  character: PropTypes.shape({
-    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    name: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    race: PropTypes.string,
-    gender: PropTypes.string,
-    ki: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-  }).isRequired
 }
 
 export default CharacterCard

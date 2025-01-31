@@ -1,5 +1,4 @@
 import { useContext } from 'react'
-import PropTypes from 'prop-types'
 import { FavoritesContext } from '../../context/FavoritesContext'
 import CharacterCard from '../../components/CharacterCard/CharacterCard'
 import './Favorites.css'
@@ -16,20 +15,10 @@ const Favorites = () => {
             <CharacterCard key={character.id} character={character} />
           ))
         ) : (
-          <p>No favorites yet!</p>
+          <p>No Has Seleccionado Ningun Favorito!</p>
         )}
       </div>
     </div>
-  )
-}
-
-Favorites.propTypes = {
-  favorites: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-      name: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired
-    })
   )
 }
 
