@@ -9,3 +9,6 @@
 button:hover {
   color: var(--segundo-color);
 }
+.delete-button {
+  width: 170px;
+}

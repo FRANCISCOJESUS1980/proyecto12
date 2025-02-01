@@ -28,21 +28,13 @@ Desarrollado con **React, Context API, React Router y LocalStorage**.
 git clone https://github.com/tu_usuario/dragon-ball-app.git
 cd dragon-ball-app
 2️⃣ Instala las dependencias
-sh
-Copiar
-Editar
 npm install
 3️⃣ Ejecuta el proyecto
-sh
-Copiar
-Editar
 npm run dev
 Abre http://localhost:5173 en el navegador.
 
 📂 Estructura del Proyecto
-bash
-Copiar
-Editar
+
 src/
 │── components/
 │   ├── CharacterCard/
@@ -56,20 +48,21 @@ src/
 │   ├── Favorites/
 │   ├── AddCharacter/
 │   ├── Contact/
+|-- |-- videos/
 │── hooks/
-│   ├── useDragonBallAPI.js
+│   ├── useDragonBallAPI.js/
+|-- |-- useAddCharacter.js/
+|-- |-- useFavorites.js/
 │── App.jsx
 │── main.jsx
-│── styles.css
+│── App.css
 🏗️ Optimización del Código
 ✅ Persistencia con LocalStorage
 Se han implementado cambios para que los personajes agregados se guarden en LocalStorage.
 Si el usuario recarga la página, los datos se mantendrán.
 
 CharactersProvider (uso de LocalStorage)
-jsx
-Copiar
-Editar
+
 import { createContext, useReducer, useContext, useEffect } from 'react';
 
 const initialState = {

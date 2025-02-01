@@ -1,14 +1,54 @@
 import { useAddCharacter } from '../../hooks/useAddCharacter'
+import { showSuccessAlert, showErrorAlert } from '../../utils/alertService'
 import './AddCharacter.css'
 
 const AddCharacter = () => {
   const { state, handleChange, handleImageChange, handleSubmit, preview } =
     useAddCharacter()
 
+  const handleFormSubmit = async (e) => {
+    e.preventDefault()
+
+    if (!state.name.trim()) {
+      return showErrorAlert(
+        'Campo Requerido',
+        'El nombre del personaje es obligatorio.'
+      )
+    }
+    if (!state.race.trim()) {
+      return showErrorAlert(
+        'Campo Requerido',
+        'La raza del personaje es obligatoria.'
+      )
+    }
+    if (!state.gender) {
+      return showErrorAlert('Campo Requerido', 'Debes seleccionar un género.')
+    }
+    if (!state.ki || state.ki <= 0) {
+      return showErrorAlert(
+        'Valor Inválido',
+        'El nivel de Ki debe ser un número positivo.'
+      )
+    }
+    if (!preview) {
+      return showErrorAlert(
+        'Campo Requerido',
+        'Debes subir una imagen del personaje.'
+      )
+    }
+
+    try {
+      await handleSubmit(e)
+      showSuccessAlert('¡Éxito!', 'Personaje agregado correctamente.')
+    } catch (error) {
+      showErrorAlert('Error', 'No se pudo agregar el personaje.')
+    }
+  }
+
   return (
     <div className='add-character-container'>
       <h1>➕ Agregar Nuevo Personaje</h1>
-      <form onSubmit={handleSubmit} className='add-character-form'>
+      <form onSubmit={handleFormSubmit} className='add-character-form'>
         <input
           type='text'
           name='name'

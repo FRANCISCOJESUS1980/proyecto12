@@ -1,24 +1,37 @@
-import { useContext, memo } from 'react'
+import { useContext } from 'react'
 import { FavoritesContext } from '../../context/FavoritesContext'
+import { useCharacters } from '../../context/CharacterContext'
 import './CharacterCard.css'
 
-const CharacterCard = memo(({ character }) => {
-  const { favorites, dispatch } = useContext(FavoritesContext)
+const CharacterCard = ({ character }) => {
+  const { favorites, dispatch: favoritesDispatch } =
+    useContext(FavoritesContext)
+  const { characters, dispatch: charactersDispatch } = useCharacters()
 
   if (!character) return null
 
   const isFavorite = favorites.some((fav) => fav.id === character.id)
 
   const toggleFavorite = () => {
-    dispatch({
-      type: isFavorite ? 'REMOVE_FAVORITE' : 'ADD_FAVORITE',
-      payload: character
-    })
+    if (isFavorite) {
+      favoritesDispatch({ type: 'REMOVE_FAVORITE', payload: character })
+    } else {
+      favoritesDispatch({ type: 'ADD_FAVORITE', payload: character })
+    }
   }
+
+  const handleDelete = () => {
+    charactersDispatch({ type: 'REMOVE_CHARACTER', payload: character.id })
+  }
+
+  const isUserCreated = characters.some((char) => char.id === character.id)
 
   return (
     <article className='character-card'>
-      <img src={character.image} alt={character.name} />
+      <div className='image-container'>
+        <img src={character.image} alt={character.name} />
+      </div>
+
       <h2>{character.name}</h2>
       <p>
         <strong>Raza:</strong> {character.race || 'Desconocido'}
@@ -29,11 +42,21 @@ const CharacterCard = memo(({ character }) => {
       <p>
         <strong>Ki:</strong> {character.ki || 'Desconocido'}
       </p>
+
       <button className='characterbutton' onClick={toggleFavorite}>
         {isFavorite ? '❌ Eliminar de Favoritos' : '❤️ Agregar a Favoritos'}
       </button>
+
+      {isUserCreated && (
+        <button
+          className='characterbutton delete-button'
+          onClick={handleDelete}
+        >
+          🗑️ Eliminar Personaje
+        </button>
+      )}
     </article>
   )
-})
+}
 
 export default CharacterCard
