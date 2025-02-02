@@ -33,10 +33,10 @@
   transition: background 0.3s;
 }
 .delete-button {
-  margin-top: 5px;
-  cursor: pointer;
-  width: 160px;
+  margin: 5px;
+  max-width: 160px;
 }
+
 .image-container {
   width: 100%;
   height: 250px;

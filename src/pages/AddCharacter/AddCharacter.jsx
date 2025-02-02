@@ -1,93 +1,64 @@
-import { useAddCharacter } from '../../hooks/useAddCharacter'
 import { showSuccessAlert, showErrorAlert } from '../../utils/alertService'
+import AddCharacterForm from './AddCharacterForm'
+import { useCharacters } from '../../context/CharacterContext'
 import './AddCharacter.css'
 
 const AddCharacter = () => {
-  const { state, handleChange, handleImageChange, handleSubmit, preview } =
-    useAddCharacter()
-
-  const handleFormSubmit = async (e) => {
-    e.preventDefault()
-
-    if (!state.name.trim()) {
-      return showErrorAlert(
+  const { dispatch } = useCharacters()
+  console.log('me renderizo')
+  const handleFormSubmit = async (formState, resetForm) => {
+    if (!formState.name.trim()) {
+      showErrorAlert(
         'Campo Requerido',
         'El nombre del personaje es obligatorio.'
       )
+      return false
     }
-    if (!state.race.trim()) {
-      return showErrorAlert(
-        'Campo Requerido',
-        'La raza del personaje es obligatoria.'
-      )
+    if (!formState.race.trim()) {
+      showErrorAlert('Campo Requerido', 'La raza del personaje es obligatoria.')
+      return false
     }
-    if (!state.gender) {
-      return showErrorAlert('Campo Requerido', 'Debes seleccionar un género.')
+    if (!formState.gender) {
+      showErrorAlert('Campo Requerido', 'Debes seleccionar un género.')
+      return false
     }
-    if (!state.ki || state.ki <= 0) {
-      return showErrorAlert(
+    if (!formState.ki || formState.ki <= 0) {
+      showErrorAlert(
         'Valor Inválido',
         'El nivel de Ki debe ser un número positivo.'
       )
+      return false
     }
-    if (!preview) {
-      return showErrorAlert(
-        'Campo Requerido',
-        'Debes subir una imagen del personaje.'
-      )
+    if (!formState.preview) {
+      showErrorAlert('Campo Requerido', 'Debes subir una imagen del personaje.')
+      return false
     }
 
     try {
-      await handleSubmit(e)
+      const newCharacter = {
+        id: Date.now(),
+        name: formState.name,
+        race: formState.race,
+        gender: formState.gender,
+        ki: formState.ki,
+        image: formState.preview
+      }
+
+      dispatch({ type: 'ADD_CHARACTER', payload: newCharacter })
       showSuccessAlert('¡Éxito!', 'Personaje agregado correctamente.')
+
+      resetForm()
+      return true
     } catch (error) {
       showErrorAlert('Error', 'No se pudo agregar el personaje.')
+      return false
     }
   }
 
   return (
     <div className='add-character-container'>
       <h1>➕ Agregar Nuevo Personaje</h1>
-      <form onSubmit={handleFormSubmit} className='add-character-form'>
-        <input
-          type='text'
-          name='name'
-          value={state.name}
-          onChange={handleChange}
-          placeholder='Nombre del personaje'
-        />
-
-        <input
-          type='text'
-          name='race'
-          value={state.race}
-          onChange={handleChange}
-          placeholder='Raza del personaje'
-        />
-
-        <select name='gender' value={state.gender} onChange={handleChange}>
-          <option value=''>Selecciona género</option>
-          <option value='Masculino'>Masculino</option>
-          <option value='Femenino'>Femenino</option>
-          <option value='Otro'>Otro</option>
-        </select>
-
-        <input
-          type='number'
-          name='ki'
-          value={state.ki}
-          onChange={handleChange}
-          placeholder='Nivel de Ki'
-        />
-
-        <input type='file' accept='image/*' onChange={handleImageChange} />
-
-        {preview && (
-          <img src={preview} alt='Vista previa' className='preview-image' />
-        )}
-
-        <button type='submit'>✅ Guardar Personaje</button>
-      </form>
+      <AddCharacterForm handleFormSubmit={handleFormSubmit} />
     </div>
   )
 }
