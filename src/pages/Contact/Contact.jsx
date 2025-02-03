@@ -6,7 +6,7 @@ import './Contact.css'
 
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false)
-
+  console.log('me renderizo en contactos')
   return (
     <section className='contact-page'>
       <header className='contact-header'>

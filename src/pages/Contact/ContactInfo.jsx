@@ -28,7 +28,7 @@ const ContactInfo = () => {
           <Mail className='icon' />
           <div>
             <h3>Email</h3>
-            <p>info@tudominio.com</p>
+            <p>info@gmail.com</p>
           </div>
         </div>
 
