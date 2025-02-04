@@ -1,6 +1,10 @@
 import { useContext } from 'react'
 import { FavoritesContext } from '../../context/FavoritesContext'
 import { useCharacters } from '../../context/CharacterContext'
+import {
+  showSuccessAlert,
+  showConfirmationAlert
+} from '../../utils/alertService'
 import './CharacterCard.css'
 
 const CharacterCard = ({ character }) => {
@@ -20,8 +24,19 @@ const CharacterCard = ({ character }) => {
     }
   }
 
-  const handleDelete = () => {
-    charactersDispatch({ type: 'REMOVE_CHARACTER', payload: character.id })
+  const handleDelete = async () => {
+    const confirmed = await showConfirmationAlert(
+      '¿Estás seguro?',
+      'Esta acción es irreversible. ¿Deseas eliminar este personaje?'
+    )
+
+    if (confirmed) {
+      charactersDispatch({ type: 'REMOVE_CHARACTER', payload: character.id })
+      showSuccessAlert(
+        'Eliminado',
+        'El personaje ha sido eliminado correctamente.'
+      )
+    }
   }
 
   const isUserCreated = characters.some((char) => char.id === character.id)

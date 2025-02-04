@@ -6,13 +6,11 @@ import { CharactersProvider } from './context/CharacterContext'
 import { FavoritesProvider } from './context/FavoritesContext'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <CharactersProvider>
-        <FavoritesProvider>
-          <App />
-        </FavoritesProvider>
-      </CharactersProvider>
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+    <CharactersProvider>
+      <FavoritesProvider>
+        <App />
+      </FavoritesProvider>
+    </CharactersProvider>
+  </BrowserRouter>
 )

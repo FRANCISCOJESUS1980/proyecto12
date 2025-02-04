@@ -14,8 +14,11 @@
 }
 .character-card > p {
   font-size: medium;
+  overflow: hidden;
 }
-
+h2 {
+  overflow: hidden;
+}
 .character-card:hover img {
   transform: scale(1.45) translateY(-10px);
   box-shadow: none;
