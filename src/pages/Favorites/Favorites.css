@@ -12,3 +12,6 @@ button:hover {
 .delete-button {
   width: 170px;
 }
+p {
+  text-align: center;
+}

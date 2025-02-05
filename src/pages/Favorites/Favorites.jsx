@@ -15,7 +15,7 @@ const Favorites = () => {
             <CharacterCard key={character.id} character={character} />
           ))
         ) : (
-          <p>No Has Seleccionado Ningun Favorito!</p>
+          <p>No Has Seleccionado Ningun Personaje como Favorito!</p>
         )}
       </div>
     </div>

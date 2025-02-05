@@ -5,7 +5,7 @@ import './AddCharacter.css'
 
 const AddCharacter = () => {
   const { dispatch } = useCharacters()
-  console.log('me renderizo en agregar personaje')
+
   const handleFormSubmit = async (formState, resetForm) => {
     if (!formState.name.trim()) {
       showErrorAlert(

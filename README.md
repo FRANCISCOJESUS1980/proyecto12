@@ -10,6 +10,7 @@ Desarrollado con **React, Context API, React Router y LocalStorage**.
 - ⭐ **Guardar personajes en favoritos.**
 - 🔄 **Persistencia con LocalStorage** (los personajes agregados permanecen tras recargar la página).
 - 📄 **Paginación** para recorrer los personajes.
+  -🧨 **Eliminar personajes**
 
 ## 🛠️ Tecnologías utilizadas
 
@@ -24,7 +25,6 @@ Desarrollado con **React, Context API, React Router y LocalStorage**.
 
 ### 1️⃣ Clona el repositorio
 
-```sh
 git clone https://github.com/tu_usuario/dragon-ball-app.git
 cd dragon-ball-app
 2️⃣ Instala las dependencias
@@ -37,20 +37,20 @@ Abre http://localhost:5173 en el navegador.
 
 src/
 │── components/
-│   ├── CharacterCard/
-│   ├── Header/
-│   ├── Loader/
+│ ├── CharacterCard/
+│ ├── Header/
+│ ├── Loader/
 │── context/
-│   ├── CharactersContext.jsx
-│   ├── FavoritesContext.jsx
+│ ├── CharactersContext.jsx
+│ ├── FavoritesContext.jsx
 │── pages/
-│   ├── Home/
-│   ├── Favorites/
-│   ├── AddCharacter/
-│   ├── Contact/
+│ ├── Home/
+│ ├── Favorites/
+│ ├── AddCharacter/
+│ ├── Contact/
 |-- |-- videos/
 │── hooks/
-│   ├── useDragonBallAPI.js/
+│ ├── useDragonBallAPI.js/
 |-- |-- useAddCharacter.js/
 |-- |-- useFavorites.js/
 │── App.jsx
@@ -66,34 +66,37 @@ CharactersProvider (uso de LocalStorage)
 import { createContext, useReducer, useContext, useEffect } from 'react';
 
 const initialState = {
-  characters: JSON.parse(localStorage.getItem('characters')) || []
+characters: JSON.parse(localStorage.getItem('characters')) || []
 };
 
 const charactersReducer = (state, action) => {
-  switch (action.type) {
-    case 'ADD_CHARACTER':
-      const newCharacters = [...state.characters, action.payload];
-      localStorage.setItem('characters', JSON.stringify(newCharacters));
-      return { ...state, characters: newCharacters };
-    default:
-      return state;
-  }
+switch (action.type) {
+case 'ADD_CHARACTER':
+const newCharacters = [...state.characters, action.payload];
+localStorage.setItem('characters', JSON.stringify(newCharacters));
+return { ...state, characters: newCharacters };
+default:
+return state;
+}
 };
 
 export const CharactersContext = createContext();
 
 export const CharactersProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(charactersReducer, initialState);
+const [state, dispatch] = useReducer(charactersReducer, initialState);
 
-  return (
-    <CharactersContext.Provider value={{ characters: state.characters, dispatch }}>
-      {children}
-    </CharactersContext.Provider>
-  );
+return (
+<CharactersContext.Provider value={{ characters: state.characters, dispatch }}>
+{children}
+</CharactersContext.Provider>
+);
 };
 
 export const useCharacters = () => useContext(CharactersContext);
 
 👨‍💻 Autor
 Proyecto desarrollado por FRANCISCO JESUS 🤵
+
+```
+
 ```
